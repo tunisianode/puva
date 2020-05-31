@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>Beispiele f&uuml;r die Benutzung von Servlets</title>
+</head>
+
+<body text="#000000" bgcolor="#FFFFFF">
+
+<h1>Einige Beispiele f&uuml;r die Benutzung von Servlets</h1>
+<ul>
+
+<li>
+<h3>Das 1. Servlet</h3>
+<a href="HalloWelt">Hallo Welt</a>
+<p/>
+</li>
+
+<li>
+<h3>Das 2. Servlet</h3>
+<a href="HalloSonne">Hallo Sonne</a>
+<p/>
+</li>
+
+<li>
+<h3>Teebestellung</h3>
+<form method="get" action="Tee">
+<p>Geben Sie Ihren Namen an:
+<input type="text" name="Besteller" size="40"/></p>
+<p>Geben Sie Ihre Kreditkartennummer an:
+<input type="password" name="Kreditkartennummer" size="20"/></p>
+<p>Welchen Tee wollen Sie:
+<input type="radio" name="Teesorte" value="Assam"/>Assam
+<input type="radio" name="Teesorte" value="Darjeeling"/>
+Darjeeling
+<input type="radio" name="Teesorte" value="Ceylon"/>Ceylon</p>
+<p>Eilbestellung:
+<input type="checkbox" name="Eile"/></p>
+<p>Zum Zur&uuml;cksetzen aller Eingaben:
+<input type="reset" value="Zur&uuml;cksetzen"/></p>
+<p>Zum Bestellen:
+<input type="submit" value="Absenden des Formulars"/></p>
+</form>
+<p/>
+</li>
+
+<li>
+<h3>Eingabedaten betrachten</h3>
+<form method="post" action="Formular">
+<p>Geben Sie Ihren Namen an:
+<input type="text" name="Besteller" size="40"/></p>
+<p>Geben Sie Ihre Kreditkartennummer an:
+<input type="password" name="Kreditkartennummer" size="20"/></p>
+<p>Welchen Tee wollen Sie:
+<input type="radio" name="Teesorte" value="Assam"/>Assam
+<input type="radio" name="Teesorte" value="Darjeeling"/>
+Darjeeling
+<input type="radio" name="Teesorte" value="Ceylon"/>Ceylon</p>
+<p>Eilbestellung:
+<input type="checkbox" name="Eile"/></p>
+<p>Zum Zur&uuml;cksetzen aller Eingaben:
+<input type="reset" value="Zur&uuml;cksetzen"/></p>
+<p>Zum Bestellen:
+<input type="submit" value="Absenden des Formulars"/></p>
+</form>
+<p/>
+</li>
+
+<li>
+<h3>Herunterladen einer von einem Servlet generierten Datei</h3>
+<form method="get" action="Herunterladen">
+Anzahl der Zeilen der generierten Datei:
+<input name="lines" type="text"/><br/>
+<input type="submit" value="Jetzt herunterladen!"/>
+</form>
+<p/>
+</li>
+
+<li>
+<h3>Hochladen einer Datei zu einem Servlet</h3>
+<form method="post" enctype="multipart/form-data"
+ action=" Hochladen">
+<p>Vorname: <input name="vorname" type="text"/></p>
+<p>Nachname: <input name="nachname" type="text"/></p>
+<p>Lebenslauf: <input name="upload" type="file"/></p>
+<p><input type="submit" value="Jetzt hochladen!"/></p>
+</form>
+<p/>
+</li>
+
+<li>
+<h3>Demonstration einer Session</h3>
+<a href="Kennedy">Kennedy (Kenn e di?)</a>
+<p/>
+</li>
+
+<li>
+<h3>Demonstration von Cookies</h3>
+<a href="KennedyMitCookies">Kennedy (Kenn e di?) mit Cookies</a>
+<p/>
+</li>
+
+</ul>
+
+</body>
+</html>

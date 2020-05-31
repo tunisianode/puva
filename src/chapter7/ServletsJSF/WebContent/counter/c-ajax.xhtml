@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+	
+    <h:head>
+        <title>Z&auml;hler mit unterschiedlichen Geschmacksrichtungen (in AJAX)</title>
+    </h:head>
+    <h:body>
+        <h1>Z&auml;hler mit unterschiedlichen Geschmacksrichtungen (in AJAX)</h1>
+        <h2>Application Scope</h2>
+        <h:form id="appform">
+            <p>Aktueller Z&auml;hlerstand:
+                <h:outputText id="counter" value="#{applicationCounter.counter}" />
+            </p>
+            <p>
+                <h:commandButton value="Erhoehen!" actionListener="#{applicationCounter.increment}">
+                    <f:ajax render="appform:counter"/>
+                </h:commandButton>
+                <h:commandButton value="Zur&uuml;cksetzen!" actionListener="#{applicationCounter.reset}">
+                    <f:ajax render="appform:counter"/>
+                </h:commandButton>
+            </p>
+        </h:form>
+        <h2>Session Scope</h2>
+        <h:form id="sessform">
+            <p>Aktueller Z&auml;hlerstand:
+                <h:outputText id="counter" value="#{sessionCounter.counter}" />
+            </p>
+            <p>
+                <h:commandButton value="Erh&ouml;hen!" actionListener="#{sessionCounter.increment}">
+                    <f:ajax render="sessform:counter"/>
+                </h:commandButton>
+                <h:commandButton value="Zur&uuml;cksetzen!" actionListener="#{sessionCounter.reset}">
+                    <f:ajax render="sessform:counter"/>
+                </h:commandButton>
+            </p>
+        </h:form>
+        <h2>View Scope</h2>
+        <h:form id="viewform">
+            <p>Aktueller Z&auml;hlerstand:
+                <h:outputText id="counter" value="#{viewCounter.counter}" />
+            </p>
+            <p>
+                <h:commandButton value="Erh&ouml;hen!" actionListener="#{viewCounter.increment}">
+                    <f:ajax render="viewform:counter"/>
+                </h:commandButton>
+                <h:commandButton value="Zur&uuml;cksetzen!" actionListener="#{viewCounter.reset}">
+                    <f:ajax render="viewform:counter"/>
+                </h:commandButton>
+            </p>
+        </h:form>
+        <h2>Request Scope</h2>
+        <h:form id="reqform">
+            <p>Aktueller Z&auml;hlerstand:
+                <h:outputText id="counter" 	value="#{requestCounter.counter}" />
+            </p>
+            <p>
+                <h:commandButton value="Erh&ouml;hen!" actionListener="#{requestCounter.increment}">
+                    <f:ajax render="reqform:counter"/>
+                </h:commandButton>
+                <h:commandButton value="Zur&uuml;cksetzen!" actionListener="#{requestCounter.reset}">
+                    <f:ajax render="reqform:counter"/>
+                </h:commandButton>
+            </p>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>Z&auml;hler mit unterschiedlichen Geschmacksrichtungen</title>
+    </h:head>
+    <h:body>
+        <h1>Z&auml;hler mit unterschiedlichen Geschmacksrichtungen</h1>
+        <h2>Application Scope</h2>
+        <h:form>
+            <p>Aktueller Z&auml;hlerstand:
+                <h:outputText value="#{applicationCounter.counter}" />
+            </p>
+            <p>
+                <h:commandButton value="Erhoehen!" actionListener="#{applicationCounter.increment}"/>
+                <h:commandButton value="Zur&uuml;cksetzen!" actionListener="#{applicationCounter.reset}"/>
+            </p>
+        </h:form>
+        <h2>Session Scope</h2>
+        <h:form>
+            <p>Aktueller Z&auml;hlerstand:
+                <h:outputText value="#{sessionCounter.counter}" />
+            </p>
+            <p>
+                <h:commandButton value="Erh&ouml;hen!" actionListener="#{sessionCounter.increment}"/>
+                <h:commandButton value="Zur&uuml;cksetzen!" actionListener="#{sessionCounter.reset}"/>
+            </p>
+        </h:form>
+        <h2>View Scope</h2>
+        <h:form>
+            <p>Aktueller Z&auml;hlerstand:
+                <h:outputText value="#{viewCounter.counter}" />
+            </p>
+            <p>
+                <h:commandButton value="Erh&ouml;hen!" actionListener="#{viewCounter.increment}"/>
+                <h:commandButton value="Zur&uuml;cksetzen!" actionListener="#{viewCounter.reset}"/>
+            </p>
+        </h:form>
+        <h2>Request Scope</h2>
+        <h:form>
+            <p>Aktueller Z&auml;hlerstand:
+                <h:outputText value="#{requestCounter.counter}" />
+            </p>
+            <p>
+                <h:commandButton value="Erh&ouml;hen!" actionListener="#{requestCounter.increment}"/>
+                <h:commandButton value="Zur&uuml;cksetzen!" actionListener="#{requestCounter.reset}"/>
+            </p>
+        </h:form>
+    </h:body>
+</html>

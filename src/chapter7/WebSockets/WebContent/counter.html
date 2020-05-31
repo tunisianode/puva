@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Z&auml;hler mit WebSockets</title>
+    <style type="text/css">
+        input#chat {
+            width: 410px
+        }
+
+        #console-container {
+            width: 400px;
+        }
+
+        #console {
+            border: 1px solid #CCCCCC;
+            border-right-color: #999999;
+            border-bottom-color: #999999;
+            height: 170px;
+            overflow-y: scroll;
+            padding: 5px;
+            width: 100%;
+        }
+
+        #console p {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        var ClientCounter = {};
+
+        ClientCounter.socket = null;
+
+        ClientCounter.connect = (function(host) {
+            if ('WebSocket' in window) {
+                ClientCounter.socket = new WebSocket(host);
+            } else if ('MozWebSocket' in window) {
+                ClientCounter.socket = new MozWebSocket(host);
+            } else {
+                Console.log('Error: WebSocket is not supported by this browser.');
+                return;
+            }
+
+            ClientCounter.socket.onopen = function () {
+                Console.log('Info: WebSocket connection opened.');
+                document.getElementById('increment').disabled = false;
+                document.getElementById('reset').disabled = false;
+            };
+
+            ClientCounter.socket.onclose = function () {
+                document.getElementById('increment').disabled = true;
+                document.getElementById('reset').disabled = true;
+                document.getElementById('increment').onclick = null;
+                document.getElementById('reset').onclick = null;
+                Console.log('Info: WebSocket closed.');
+            };
+
+            ClientCounter.socket.onmessage = function (message) {
+                Console.log(message.data);
+            };
+        });
+
+        ClientCounter.initialize = function() {
+            if (window.location.protocol == 'http:') {
+                ClientCounter.connect('ws://' + window.location.host + '/WebSockets/counter');
+            } else {
+                ClientCounter.connect('wss://' + window.location.host + '/WebSockets/counter');
+            }
+        };
+
+        ClientCounter.increment = (function() {
+            ClientCounter.socket.send('increment');
+        });
+
+        ClientCounter.reset = (function() {
+            ClientCounter.socket.send('reset');
+        });
+
+        var Console = {};
+
+        Console.log = (function(message) {
+            var console = document.getElementById('console');
+            var p = document.createElement('p');
+            p.style.wordWrap = 'break-word';
+            p.innerHTML = message;
+            console.appendChild(p);
+            while (console.childNodes.length > 25) {
+                console.removeChild(console.firstChild);
+            }
+            console.scrollTop = console.scrollHeight;
+        });
+
+        ClientCounter.initialize();
+
+    </script>
+</head>
+<body>
+    <h1>Z&auml;hler mit WebSockets</h1>
+    
+    <p>
+    <div>
+        <button id="increment" onclick="ClientCounter.increment();">Increment</button>
+        <button id="reset" onclick="ClientCounter.reset();">Reset</button>
+ 	</div>
+ 	
+ 	<p>
+    <div id="console-container">
+        <div id="console"></div>
+    </div>
+</body>
+</html>
